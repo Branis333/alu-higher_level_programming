@@ -1,11 +1,22 @@
 #!/usr/bin/python3
-"""Fetch a url"""
+"""
+Script that takes in a URL, sends a request to the URL and displays the
+body of the response (decoded in utf-8).
 
-import requests
+Usage: ./3-error_code.py <URL>
+  - Handles HTTP errors.
+"""
+from sys import argv
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError
 
 
 if __name__ == "__main__":
-    response = requests.get("https://intranet.hbtn.io/status")
-    print("Body response:")
-    print("\t- type: {}".format(type(response.text)))
-    print("\t- content: {}".format(response.text))
+    url = argv[1]
+    req = Request(url)
+
+    try:
+        with urlopen(req) as response:
+            print(response.read().decode("ascii"))
+    except HTTPError as e:
+        print("Error code: {}".format(e.code))
