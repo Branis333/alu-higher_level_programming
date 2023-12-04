@@ -1,19 +1,17 @@
 #!/usr/bin/python3
-"""call content"""
+"""I documented you"""
 
 import urllib.request
-import urllib.error
+import urllib.parse
 import sys
 
 if __name__ == '__main__':
-    """"Message"""
+    """"Documented"""
     url = sys.argv[1]
-    req = urllib.request.Request(url)
-    try:
-        with urllib.request.urlopen(req) as response:
-            data = response.read()
-            print("{}".format(data.decode("utf-8")))
-    except urllib.error.HTTPError as e:
-        print("Error code: {}".format(e.code))
-    except urllib.error.URLError as e:
-        print(e.reason)
+    message = {"email": sys.argv[2]}
+    data = urllib.parse.urlencode(message)
+    data = data.encode('ascii')
+    req = urllib.request.Request(url, data)
+    with urllib.request.urlopen(req) as response:
+        content = response.read()
+        print("{}".format(content.decode("utf-8")))

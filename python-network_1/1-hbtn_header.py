@@ -1,17 +1,17 @@
 #!/usr/bin/python3
-"""I documented you"""
+"""
+Script that takes in a URL, sends a request to the URL and displays
+the value of the X-Request-Id variable found in the header of the response.
 
-import urllib.request
-import urllib.parse
-import sys
+Usage: ./1-hbtn_header.py <URL>
+"""
+from sys import argv
+from urllib.request import Request, urlopen
 
-if __name__ == '__main__':
-    """"Documented"""
-    url = sys.argv[1]
-    message = {"email": sys.argv[2]}
-    data = urllib.parse.urlencode(message)
-    data = data.encode('ascii')
-    req = urllib.request.Request(url, data)
-    with urllib.request.urlopen(req) as response:
-        content = response.read()
-        print("{}".format(content.decode("utf-8")))
+
+if __name__ == "__main__":
+    url = argv[1]
+    req = Request(url)
+
+    with urlopen(req) as response:
+        print(dict(response.headers).get("X-Request-Id"))
