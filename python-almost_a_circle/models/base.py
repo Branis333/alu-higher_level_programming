@@ -8,26 +8,26 @@ import csv
 
 class Base:
     """A base class"""
-    __nb_objects = 0 
+    __nb_objects = 0
 
     def __init__(self, id=None):
         """Initialize a new id"""
         if id is not None:
             self.id = id
         else:
-            Base.__nb_objects +=1
-            self.id = Base.__nd_objects
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Convert a list of dictionaries to JSON string"""
+        """Convert a list of dictionaries to a JSON string"""
         if list_dictionaries is None:
             return "[]"
 
-         if len(list_dictionaries) == 0:
+        if len(list_dictionaries) == 0:
             return "[]"
 
-        return json.dumps(list_dictinories)
+        return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -67,14 +67,14 @@ class Base:
     def load_from_file(cls):
         """Load a list of objects from a file"""
         try:
-            with open(cls.__name__ + ".json","r") as file:
+            with open(cls.__name__ + ".json", "r") as file:
                 content = file.read()
         except FileNotFoundError:
             return []
 
         ex_content = cls.from_json_string(content)
         context_list = []
-        for instance_dict in ex_context:
+        for instance_dict in ex_content:
             context_list.append(cls.create(**instance_dict))
         return context_list
 
@@ -86,19 +86,19 @@ class Base:
             fields = ["id", "width", "height", "x", "y"]
         else:
             fields = ["id", "size", "x", "y"]
-        with open(fn, mode="w", newline="") as myFile: 
+        with open(fn, mode="w", newline="") as myFile:
             if list_objs is None:
-                writer = csv.writer(myfile)
+                writer = csv.writer(myFile)
                 writer.writerow([[]])
             else:
-                write = csv.DictWriter(myFile, fieldnames=fields)
+                writer = csv.DictWriter(myFile, fieldnames=fields)
                 writer.writeheader()
                 for x in list_objs:
                     writer.writerow(x.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
-        """ Load from a csv file """
+        """ Load from a CSV file """
         try:
             fn = cls.__name__ + ".csv"
             with open(fn, newline="") as myFile:
@@ -107,23 +107,23 @@ class Base:
                 for x in reader:
                     for i, n in x.items():
                         x[i] = int(n)
-                    list.append(x)
-                return ([cls.create(**objt) for objt in lst)
+                    lst.append(x)
+                return ([cls.create(**objt) for objt in lst])
         except FileNotFoundError:
-            return([])
+            return ([])
 
     @staticmethod
     def draw(list_rectangles, list_squares):
-        """ Draw the rectangle and squares """
+        """ Draw the rectangles and squares """
         shapes = []
         if list_rectangles:
-            shapes.extend(list_rectangle)
+            shapes.extend(list_rectangles)
         if list_squares:
             shapes.extend(list_squares)
         pen = turtle.Turtle()
         pen.pen(pencolor='black', pendown=False, pensize=2, shown=False)
         for shape in shapes:
-              pen.penup()
+            pen.penup()
             pen.setpos(shape.x, shape.y)
             pen.pendown()
             pen.forward(shape.width)
