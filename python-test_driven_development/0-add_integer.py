@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """Adds two numbers"""
 
-def ass_integer(a, b=98):
+
+def add_integer(a, b=98):
     """
-    Return sum of a and  b 
+    Returns sum of a and b
     - Args :
-    a: int or float
-    b: int or float, default 98
+        a: int or float
+        b: int or float, default 98
     """
     if type(a) == float or type(b) == float:
         a = int(a)
