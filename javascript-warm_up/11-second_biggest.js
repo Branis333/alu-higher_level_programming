@@ -10,7 +10,7 @@ switch (argsCount) {
  
   default:
     for (let i = 2; i < argsCount; i++) {
-      number.push(process.argv[i]);
+      numbers.push(process.argv[i]);
     }
     numbers.sort((a, b) => b - a);
     console.log(numbers[1]);

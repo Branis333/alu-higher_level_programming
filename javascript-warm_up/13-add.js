@@ -1,2 +1,2 @@
 #!/usr/bin/node
-module.export.add = (a, b) => parseInt(a) + parseInt(b);
+module.exports.add = (a, b) => parseInt(a) + parseInt(b);
