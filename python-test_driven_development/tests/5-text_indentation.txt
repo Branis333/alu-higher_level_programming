@@ -1,0 +1,36 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation()
+<<<<<<< HEAD
+Traceback (most recent call last)
+=======
+Traceback (most recent call last):
+>>>>>>> 2bbca3d47bdf7221149f28bea47d7356b032b0a6
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+>>> text_indentation("Holberton. School? How are you: John")
+Holberton.
+<BLANKLINE>
+School?
+<BLANKLINE>
+How are you:
+<BLANKLINE>
+John
+
+>>> text_indentation(2)
+Traceback (most recent call last):
+<<<<<<< HEAD
+TypeError: text mustbe a string
+=======
+TypeError: text must be a string
+>>>>>>> 2bbca3d47bdf7221149f28bea47d7356b032b0a6
+
+>>> text_indentation("Holberton. School")
+Holberton.
+<BLANKLINE>
+School
+<<<<<<< HEAD
+ 
+=======
+
+>>>>>>> 2bbca3d47bdf7221149f28bea47d7356b032b0a6
