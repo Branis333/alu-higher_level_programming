@@ -1,4 +1,4 @@
-#!/usr/bin/node 
+#!/usr/bin/node
 
 const fact = parseInt(process.argv.slice(2)[0]);
 

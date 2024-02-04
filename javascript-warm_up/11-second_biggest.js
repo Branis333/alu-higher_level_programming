@@ -7,7 +7,7 @@ switch (argsCount) {
   case 3:
     console.log(0);
     break;
- 
+
   default:
     for (let i = 2; i < argsCount; i++) {
       numbers.push(process.argv[i]);
