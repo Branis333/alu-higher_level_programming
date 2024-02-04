@@ -10,4 +10,4 @@ function add (a,b) {
   console.log(sum);
 }
 
-add(num1, num);
+add(num1, num2);
