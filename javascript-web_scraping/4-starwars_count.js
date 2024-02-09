@@ -12,7 +12,7 @@ request.get(url, function (err, res) {
     data = JSON.parse(res.body).results;
     data.forEach((obj) => {
       obj.characters.forEach((character) => {
-	if (character.includes('/18/')) count++;
+        if (character.includes('/18/')) count++;
       });
     });
   }
